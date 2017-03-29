@@ -1,4 +1,4 @@
-package com.excavator.rpc.boot;
+package com.excavator.rpc.boot.server;
 
 import com.excavator.rpc.boot.service.SayService;
 import com.excavator.rpc.boot.service.impl.SayServiceImpl;

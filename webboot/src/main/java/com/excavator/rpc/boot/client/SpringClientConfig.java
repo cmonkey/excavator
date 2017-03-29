@@ -1,4 +1,4 @@
-package com.excavator.rpc.boot;
+package com.excavator.rpc.boot.client;
 
 import com.excavator.rpc.boot.service.SayService;
 import com.excavator.rpc.factory.ClientFactoryBean;
@@ -23,11 +23,12 @@ public class SpringClientConfig{
 
     @Value("${serviceName}")
     private String serviceName;
+
     @Bean
     public SayService clientFactoryBean() throws Exception{
         ClientFactoryBean<SayService> clientFactoryBean = new ClientFactoryBean<>();
-        clientFactoryBean.setZkConn(zkConnection);
-        clientFactoryBean.setServiceName(serviceName);
+        clientFactoryBean.setZkConn("10.0.0.15:2181");
+        clientFactoryBean.setServiceName("sayService");
         clientFactoryBean.setServiceInterface(SayService.class);
 
         return clientFactoryBean.getObject();
