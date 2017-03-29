@@ -2,6 +2,7 @@ package com.excavator.rpc.boot;
 
 import com.excavator.rpc.boot.service.SayService;
 import com.excavator.rpc.factory.ClientFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,13 +18,16 @@ import javax.annotation.Resource;
 @RequestMapping("/test")
 public class SpringClientConfig{
 
-    String zkConn = "";
+    @Value("${zkConnection}")
+    private String zkConnection;
 
+    @Value("${serviceName}")
+    private String serviceName;
     @Bean
     public SayService clientFactoryBean() throws Exception{
         ClientFactoryBean<SayService> clientFactoryBean = new ClientFactoryBean<>();
-        clientFactoryBean.setZkConn(zkConn);
-        clientFactoryBean.setServiceName("hello");
+        clientFactoryBean.setZkConn(zkConnection);
+        clientFactoryBean.setServiceName(serviceName);
         clientFactoryBean.setServiceInterface(SayService.class);
 
         return clientFactoryBean.getObject();
