@@ -47,21 +47,27 @@
               <version>1.1</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId> <!-- Use 'netty-all' for 4.0 or above -->
-            <version>4.1.6.Final</version>
-            <scope>compile</scope>
+            <version>4.1.7.Final</version>
         </dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>2.9.3</version>
 		</dependency>
+        <!--
 		<dependency>
 			<groupId>io.springside</groupId>
 			<artifactId>springside-redis</artifactId>
 			<version>4.3.0-SNAPSHOT</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>io.springside</groupId>
 			<artifactId>springside-utils</artifactId>
@@ -74,6 +80,13 @@
             <version></version>
 		</dependency>
         -->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
 		<dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -109,6 +122,11 @@
 			<artifactId>curator-recipes</artifactId>
 			<version>2.9.1</version>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
@@ -119,6 +137,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.16</version>
             <scope>test</scope>
         </dependency>
         <dependency>
