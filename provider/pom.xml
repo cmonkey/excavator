@@ -13,7 +13,7 @@
     <artifactId>provider</artifactId>
 
     <properties>
-        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.version>LATEST</spring.version>
     </properties>
     <dependencies>
         <dependency>
