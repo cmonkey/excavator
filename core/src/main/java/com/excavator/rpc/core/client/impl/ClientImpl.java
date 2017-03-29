@@ -31,6 +31,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static com.excavator.rpc.core.utils.Constant.ZK_DATA_PATH;
+
 /**
  * Created by cmonkey on 3/28/17.
  */
@@ -51,13 +53,6 @@ public class ClientImpl implements Client{
     public ClientImpl(String serviceName){
         this.serviceName = serviceName;
     }
-
-    private String getZkConn(){
-        return "";
-    }
-
-    private static final String ZK_DATA_PATH = "";
-
     public void init(){
         curatorFramework = CuratorFrameworkFactory.newClient(getZkConn(), new ExponentialBackoffRetry(1000, 3));
         curatorFramework.start();
@@ -227,5 +222,9 @@ public class ClientImpl implements Client{
 
     public void setZkConn(String zkConn) {
         this.zkConn = zkConn;
+    }
+
+    public String getZkConn(){
+        return zkConn;
     }
 }
