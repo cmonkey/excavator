@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.excavator.rpc.core.utils.Constant.ZK_DATA_PATH;
+
 /**
  * Created by cmonkey on 3/28/17.
  */
@@ -40,7 +42,6 @@ public class ServerImpl implements Server{
     private EventLoopGroup bossGroup = new NioEventLoopGroup();
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
     private CuratorFramework curatorFramework;
-    private static final String ZK_DATA_PATH = "";
     public ServerImpl(int prot, Object serviceImpl, String serviceName){
         this.port = port;
         this.serviceImpl = serviceImpl;
@@ -82,11 +83,6 @@ public class ServerImpl implements Server{
         }
 
     }
-
-    private String getZkConn(){
-        return "";
-    }
-
     private void registerService(){
         zkConn = getZkConn();
         localIp = NetUtils.getLocalIp();
@@ -181,5 +177,9 @@ public class ServerImpl implements Server{
 
     public void setZkConn(String zkConn) {
         this.zkConn = zkConn;
+    }
+
+    public String getZkConn(){
+        return zkConn;
     }
 }
