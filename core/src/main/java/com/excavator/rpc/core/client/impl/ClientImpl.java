@@ -20,7 +20,7 @@ import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.CollectionUtils;
+import org.springside.modules.utils.Collections3;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -99,7 +99,7 @@ public class ClientImpl implements Client{
             });
 
             List<String> strings = childrenBuilder.forPath(serviceZKPath);
-            if(CollectionUtils.isEmpty(strings)){
+            if(Collections3.isEmpty(strings)){
                 throw new RuntimeException("no service available for " + serviceName);
             }
 
