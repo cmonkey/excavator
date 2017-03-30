@@ -1,7 +1,7 @@
 package com.excavator.rpc.service.consumer;
 
 import com.excavator.rpc.factory.ClientFactoryBean;
-import com.excavator.rpc.service.SayService;
+import com.excavator.rpc.service.MathService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,11 +20,11 @@ public class RpcServiceConsumerApplication {
     private String serviceName;
 
     @Bean
-    public SayService clientFactoryBean() throws Exception{
-        ClientFactoryBean<SayService> clientFactoryBean = new ClientFactoryBean<>();
+    public MathService clientFactoryBean() throws Exception{
+        ClientFactoryBean<MathService> clientFactoryBean = new ClientFactoryBean<>();
         clientFactoryBean.setZkConn(zkConnection);
         clientFactoryBean.setServiceName(serviceName);
-        clientFactoryBean.setServiceInterface(SayService.class);
+        clientFactoryBean.setServiceInterface(MathService.class);
 
         return clientFactoryBean.getObject();
     }
