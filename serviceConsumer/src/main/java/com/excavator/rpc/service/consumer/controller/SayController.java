@@ -1,4 +1,4 @@
-package com.excavator.rpc.server.consumer.controller;
+package com.excavator.rpc.service.consumer.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

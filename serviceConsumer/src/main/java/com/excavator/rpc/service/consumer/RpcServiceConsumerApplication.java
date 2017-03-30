@@ -1,7 +1,7 @@
-package com.excavator.rpc.server.consumer;
+package com.excavator.rpc.service.consumer;
 
 import com.excavator.rpc.factory.ClientFactoryBean;
-import com.excavator.rpc.server.provider.service.SayService;
+import com.excavator.rpc.service.SayService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,8 +22,8 @@ public class RpcServiceConsumerApplication {
     @Bean
     public SayService clientFactoryBean() throws Exception{
         ClientFactoryBean<SayService> clientFactoryBean = new ClientFactoryBean<>();
-        clientFactoryBean.setZkConn("10.0.0.15:2181");
-        clientFactoryBean.setServiceName("sayService");
+        clientFactoryBean.setZkConn(zkConnection);
+        clientFactoryBean.setServiceName(serviceName);
         clientFactoryBean.setServiceInterface(SayService.class);
 
         return clientFactoryBean.getObject();
