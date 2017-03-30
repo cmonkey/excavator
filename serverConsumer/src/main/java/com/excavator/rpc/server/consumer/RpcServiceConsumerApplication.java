@@ -1,7 +1,7 @@
-package com.excavator.rpc.server.provider.client;
+package com.excavator.rpc.server.consumer;
 
-import com.excavator.rpc.server.provider.service.SayService;
 import com.excavator.rpc.factory.ClientFactoryBean;
+import com.excavator.rpc.server.provider.service.SayService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 
-//@Configuration
-//@RestController
 @SpringBootApplication
-//@RequestMapping("/test")
-public class SpringClientConfig{
+public class RpcServiceConsumerApplication {
 
     @Value("${zkConnection}")
     private String zkConnection;
@@ -41,6 +38,6 @@ public class SpringClientConfig{
     }
 
     public static void main (String [] args) {
-        SpringApplication.run(SpringClientConfig.class, "--server.port=8081");
+        SpringApplication.run(RpcServiceConsumerApplication.class, );
     }
 }
