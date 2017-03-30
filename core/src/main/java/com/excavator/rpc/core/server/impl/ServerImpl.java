@@ -15,12 +15,11 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,8 +28,8 @@ import static com.excavator.rpc.core.utils.Constant.ZK_DATA_PATH;
 /**
  * Created by cmonkey on 3/28/17.
  */
+@Slf4j
 public class ServerImpl implements Server{
-    private static final Logger logger = LoggerFactory.getLogger(ServerImpl.class);
     private String localIp;
     private int port;
     private boolean started = false;
@@ -42,6 +41,7 @@ public class ServerImpl implements Server{
     private EventLoopGroup bossGroup = new NioEventLoopGroup();
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
     private CuratorFramework curatorFramework;
+
     public ServerImpl(int prot, Object serviceImpl, String serviceName){
         this.port = port;
         this.serviceImpl = serviceImpl;
@@ -75,7 +75,7 @@ public class ServerImpl implements Server{
         try {
             ChannelFuture future = serverBootstrap.bind(port).sync();
             registerService();
-            logger.info("Server started at {}",port);
+            log.info("Server started at {}",port);
             started = true;
             this.channel = future.channel();
         } catch (InterruptedException e) {
@@ -88,7 +88,7 @@ public class ServerImpl implements Server{
         localIp = NetUtils.getLocalIp();
         String serviceIp = localIp + ":" + port;
 
-        CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient(zkConn,
+        curatorFramework = CuratorFrameworkFactory.newClient(zkConn,
                 new ExponentialBackoffRetry(1000, 3));
         curatorFramework.start();
 
@@ -101,21 +101,23 @@ public class ServerImpl implements Server{
         } catch (Exception e) {
             e.printStackTrace();
             if(e.getMessage().contains("NodeExist")){
-                logger.error("this path service has already exist");
+                log.error("this path service has already exist");
             }else{
-                logger.error("Create Path error = {}", e);
+                log.error("Create Path error = {}", e);
                 throw new RuntimeException("Register error");
             }
         }
 
         boolean registerSuccess = false;
 
+        serviceRegisterPath = serviceBasePath + "/" + serviceIp;
+
         while(!registerSuccess){
 
             try {
                 curatorFramework.create()
                         .withMode(CreateMode.EPHEMERAL)
-                        .forPath(serviceBasePath + "/" + serviceIp);
+                        .forPath(serviceRegisterPath);
                 registerSuccess = true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -124,10 +126,10 @@ public class ServerImpl implements Server{
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
-                logger.info("retry register zk = {}", e.getMessage());
+                log.info("retry register zk = {}", e.getMessage());
 
                 try {
-                    curatorFramework.delete().forPath(serviceBasePath + "/" + serviceIp);
+                    curatorFramework.delete().forPath(serviceRegisterPath);
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -138,7 +140,7 @@ public class ServerImpl implements Server{
 
     @Override
     public void shutdown() {
-        logger.info("shutting down server = {}", serviceName);
+        log.info("shutting down server = {}", serviceName);
         unRegister();
 
         if(null != curatorFramework){
@@ -150,11 +152,11 @@ public class ServerImpl implements Server{
     }
 
     private void unRegister(){
-        logger.info("unRegister zookeeper");
-
+        log.info("unRegister zookeeper curator = {}", curatorFramework);
         try {
-            curatorFramework.delete().forPath(ZK_DATA_PATH + serviceName + "/" + localIp);
+            curatorFramework.delete().forPath(serviceRegisterPath);
         } catch (Exception e) {
+            log.error("unRegister zookeeper curator Exception = {}", e);
             e.printStackTrace();
         }
     }
