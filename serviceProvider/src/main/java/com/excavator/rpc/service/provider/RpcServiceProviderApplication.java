@@ -20,6 +20,9 @@ public class RpcServiceProviderApplication {
     @Value("${serviceName}")
     private String serviceName;
 
+    @Value("${rpc.server.port}")
+    private int rpc_server_port;
+
     @Bean
     public MathService mathService(){
         return new MathServiceImpl();
@@ -28,7 +31,7 @@ public class RpcServiceProviderApplication {
     public ServerFactoryBean serverFactoryBean(){
 
         final ServerFactoryBean serverFactoryBean = new ServerFactoryBean();
-        serverFactoryBean.setPort(9090);
+        serverFactoryBean.setPort(rpc_server_port);
         serverFactoryBean.setServiceInterface(MathService.class);
         serverFactoryBean.setServiceName(serviceName);
         serverFactoryBean.setServiceImpl(mathService());
