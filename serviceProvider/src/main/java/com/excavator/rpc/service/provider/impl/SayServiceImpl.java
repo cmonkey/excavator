@@ -1,4 +1,4 @@
-package com.excavator.rpc.service.provider.service.impl;
+package com.excavator.rpc.service.provider.impl;
 
 import com.excavator.rpc.service.SayService;
 

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>webboot-provider</artifactId>
+    <artifactId>serviceProvider</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +21,11 @@
         <dependency>
             <groupId>com.excavator</groupId>
             <artifactId>provider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.excavator</groupId>
+            <artifactId>serviceInterface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

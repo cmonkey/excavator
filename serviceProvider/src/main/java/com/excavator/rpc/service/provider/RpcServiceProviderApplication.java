@@ -1,6 +1,7 @@
-package com.excavator.rpc.server.provider;
+package com.excavator.rpc.service.provider;
 
-import com.excavator.rpc.server.provider.service.impl.SayServiceImpl;
+import com.excavator.rpc.service.SayService;
+import com.excavator.rpc.service.provider.impl.SayServiceImpl;
 import com.excavator.rpc.factory.ServerFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
