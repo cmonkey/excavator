@@ -1,6 +1,5 @@
 package com.excavator.rpc.server.provider;
 
-import com.excavator.rpc.server.provider.service.SayService;
 import com.excavator.rpc.server.provider.service.impl.SayServiceImpl;
 import com.excavator.rpc.factory.ServerFactoryBean;
 import org.springframework.beans.factory.annotation.Value;

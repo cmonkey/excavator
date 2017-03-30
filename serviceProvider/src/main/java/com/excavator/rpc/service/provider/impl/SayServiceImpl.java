@@ -1,11 +1,11 @@
-package com.excavator.rpc.server.provider.service.impl;
+package com.excavator.rpc.service.provider.service.impl;
 
-import com.excavator.rpc.server.provider.service.SayService;
+import com.excavator.rpc.service.SayService;
 
 /**
  * Created by cmonkey on 3/29/17.
  */
-public class SayServiceImpl implements SayService {
+public class SayServiceImpl implements SayService{
     public String say(String hello) {
         return "server: " + hello;
     }
