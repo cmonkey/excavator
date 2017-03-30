@@ -11,8 +11,9 @@
     <modules>
 		<module>core</module>
 		<module>provider</module>
-        <module>serverProvider</module>
-        <module>serverConsumer</module>
+        <module>serviceInterface</module>
+        <module>serviceProvider</module>
+        <module>serviceConsumer</module>
     </modules>
 
     <packaging>pom</packaging>
