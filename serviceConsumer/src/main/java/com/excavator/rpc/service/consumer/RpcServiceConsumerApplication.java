@@ -29,13 +29,7 @@ public class RpcServiceConsumerApplication {
         return clientFactoryBean.getObject();
     }
 
-    @Resource
-    private SayService sayService;
-    
-    @RequestMapping("/hello")
-    public String hello(String msg){
-        return sayService.say(msg);
-    }
+
 
     public static void main (String [] args) {
         SpringApplication.run(RpcServiceConsumerApplication.class);
