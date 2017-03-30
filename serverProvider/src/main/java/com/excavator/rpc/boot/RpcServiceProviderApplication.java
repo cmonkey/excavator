@@ -1,4 +1,4 @@
-package com.excavator.rpc.boot.server;
+package com.excavator.rpc.boot;
 
 import com.excavator.rpc.boot.service.SayService;
 import com.excavator.rpc.boot.service.impl.SayServiceImpl;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
  * Created by cmonkey on 3/29/17.
  */
 @SpringBootApplication
-public class SpringServerConfig {
+public class RpcServiceProviderApplication {
 
     @Value("${zkConnection}")
     private String zkConnection;
@@ -43,6 +43,6 @@ public class SpringServerConfig {
     }
 
     public static void main(String[] args){
-        SpringApplication.run(SpringServerConfig.class, "--server.port=8082");
+        SpringApplication.run(RpcServiceProviderApplication.class);
     }
 }
