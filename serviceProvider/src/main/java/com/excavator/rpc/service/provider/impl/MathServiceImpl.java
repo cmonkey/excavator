@@ -1,14 +1,11 @@
 package com.excavator.rpc.service.provider.impl;
 
-import com.excavator.rpc.service.SayService;
+import com.excavator.rpc.service.MathService;
 
 /**
  * Created by cmonkey on 3/29/17.
  */
-public class SayServiceImpl implements SayService{
-    public String say(String hello) {
-        return "server: " + hello;
-    }
+public class MathServiceImpl implements MathService{
 
     public int sum(int a, int b) {
         return a + b;

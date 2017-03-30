@@ -1,7 +1,7 @@
 package com.excavator.rpc.service.provider;
 
-import com.excavator.rpc.service.SayService;
-import com.excavator.rpc.service.provider.impl.SayServiceImpl;
+import com.excavator.rpc.service.MathService;
+import com.excavator.rpc.service.provider.impl.MathServiceImpl;
 import com.excavator.rpc.factory.ServerFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -21,17 +21,17 @@ public class RpcServiceProviderApplication {
     private String serviceName;
 
     @Bean
-    public SayService sayService(){
-        return new SayServiceImpl();
+    public MathService mathService(){
+        return new MathServiceImpl();
     }
     @Bean
     public ServerFactoryBean serverFactoryBean(){
 
         final ServerFactoryBean serverFactoryBean = new ServerFactoryBean();
         serverFactoryBean.setPort(9090);
-        serverFactoryBean.setServiceInterface(SayService.class);
+        serverFactoryBean.setServiceInterface(MathService.class);
         serverFactoryBean.setServiceName(serviceName);
-        serverFactoryBean.setServiceImpl(sayService());
+        serverFactoryBean.setServiceImpl(mathService());
         serverFactoryBean.setZkConn(zkConnection);
 
         new Thread(() -> {
