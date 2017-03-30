@@ -46,6 +46,6 @@ public class RpcServiceProviderApplication {
     }
 
     public static void main(String[] args){
-        SpringApplication.run(RpcServiceProviderApplication.class);
+        SpringApplication.run(RpcServiceProviderApplication.class, args);
     }
 }

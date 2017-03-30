@@ -32,6 +32,6 @@ public class RpcServiceConsumerApplication {
 
 
     public static void main (String [] args) {
-        SpringApplication.run(RpcServiceConsumerApplication.class);
+        SpringApplication.run(RpcServiceConsumerApplication.class, args);
     }
 }
