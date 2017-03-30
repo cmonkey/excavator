@@ -20,10 +20,24 @@ public class MathController {
     private MathService mathService;
 
     @GetMapping("/math/sum/{a}/{b}")
-    public String sum(@PathVariable int a , @PathVariable int b){
+    public int sum(@PathVariable int a , @PathVariable int b){
+        logger.info("sum param = {}, {}",a, b);
+
         int sum = mathService.sum(a, b);
+
         logger.info("math sum result = {}", sum);
 
-        return String.valueOf(sum);
+        return sum;
+    }
+
+    @GetMapping("/math/max/{a}/{b}")
+    public int max(@PathVariable int a, @PathVariable int b){
+        logger.info("max param = {}, {}",a, b);
+
+        int max = mathService.max(a, b);
+
+        logger.info("math max result = {}", max);
+
+        return max;
     }
 }
