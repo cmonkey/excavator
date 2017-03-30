@@ -4,9 +4,7 @@ import com.excavator.rpc.service.SayService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,8 +19,8 @@ public class SayController {
     @Resource
     private SayService sayService;
 
-    @RequestMapping("/hello/{msg}")
-    public String hello(@RequestParam(value = "msg", required =  false) String msg){
+    @GetMapping("/hello/{msg}")
+    public String hello(@PathVariable String msg){
         String result = sayService.say(msg);
         logger.info("hello result = {}", result);
 
