@@ -5,14 +5,13 @@ import com.excavator.rpc.core.serializer.impl.KryoSerializer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by cmonkey on 3/28/17.
  */
+@Slf4j
 public class RpcDecoder extends LengthFieldBasedFrameDecoder{
-    private static final Logger logger = LoggerFactory.getLogger(RpcDecoder.class);
     private Serializer serializer = new KryoSerializer();
     public RpcDecoder(int maxFrameLength){
         super(maxFrameLength, 0, 4, 0, 4);
@@ -30,7 +29,7 @@ public class RpcDecoder extends LengthFieldBasedFrameDecoder{
             return deserialize;
         }
 
-        logger.info("Decoder result is null");
+        log.info("Decoder result is null");
 
         return null;
     }

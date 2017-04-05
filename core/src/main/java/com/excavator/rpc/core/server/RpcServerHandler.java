@@ -4,16 +4,15 @@ import com.excavator.rpc.core.protocol.Request;
 import com.excavator.rpc.core.protocol.Response;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 
 /**
  * Created by cmonkey on 3/28/17.
  */
+@Slf4j
 public class RpcServerHandler extends SimpleChannelInboundHandler<Request>{
-    private static final Logger logger = LoggerFactory.getLogger(RpcServerHandler.class);
     private Object service;
 
     public RpcServerHandler(Object service){
@@ -40,7 +39,7 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<Request>{
 
     @Override
     public void exceptionCaught(ChannelHandlerContext context, Throwable cause)throws Exception{
-        logger.error("Exception caught on {}", context.channel(), cause);
+        log.error("Exception caught on {}", context.channel(), cause);
         context.channel().close();
     }
 }

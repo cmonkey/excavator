@@ -9,17 +9,16 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by cmonkey on 3/28/17.
  */
+@Slf4j
 public class ConnectionObjectFactory extends BasePooledObjectFactory<Channel>{
-    private static final Logger logger = LoggerFactory.getLogger(ConnectionObjectFactory.class);
     private String ip;
     private int port;
 
@@ -48,13 +47,13 @@ public class ConnectionObjectFactory extends BasePooledObjectFactory<Channel>{
                     .connect(ip, port).sync();
             f.addListener((ChannelFutureListener) future -> {
                 if(future.isSuccess()){
-                    logger.info("connect success = {}", f);
+                    log.info("connect success = {}", f);
                 }
             });
 
             final Channel channel = f.channel();
             channel.closeFuture().addListener((ChannelFutureListener) future -> {
-                logger.info("channel close = {} {}",ip, port);
+                log.info("channel close = {} {}",ip, port);
             });
 
             return channel;
@@ -78,7 +77,7 @@ public class ConnectionObjectFactory extends BasePooledObjectFactory<Channel>{
     @Override
     public void destroyObject(PooledObject<Channel> p) throws Exception{
         p.getObject().close().addListener((ChannelFutureListener)future -> {
-            logger.info("close finish");
+            log.info("close finish");
         });
     }
 

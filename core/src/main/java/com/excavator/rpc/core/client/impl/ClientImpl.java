@@ -13,13 +13,12 @@ import com.google.common.collect.Lists;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.GetChildrenBuilder;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springside.modules.utils.Collections3;
 
 import java.lang.reflect.Method;
@@ -36,8 +35,8 @@ import static com.excavator.rpc.core.utils.Constant.ZK_DATA_PATH;
 /**
  * Created by cmonkey on 3/28/17.
  */
+@Slf4j
 public class ClientImpl implements Client{
-    private static final Logger logger = LoggerFactory.getLogger(ClientImpl.class);
     private static AtomicLong atomicLong = new AtomicLong();
 
     private String serviceName;
@@ -66,15 +65,15 @@ public class ClientImpl implements Client{
             pathChildrenCache.start();
             pathChildrenCache.getListenable().addListener((client, event) -> {
 
-                logger.info("Listen event = {}", event);
+                log.info("Listen event = {}", event);
                 List<String> newServiceData = childrenBuilder.forPath(serviceZKPath);
-                logger.info("Server = {} list change = {}", serviceName, newServiceData);
+                log.info("Server = {} list change = {}", serviceName, newServiceData);
 
                 for(ChannelConfig config : channelWrappers){
                     String connectStr = config.getConnStr();
                     if(!newServiceData.contains(connectStr)){
                         config.close();
-                        logger.info("remove channel = {}", connectStr);
+                        log.info("remove channel = {}", connectStr);
                         channelWrappers.remove(config);
                     }
                 }
@@ -98,7 +97,7 @@ public class ClientImpl implements Client{
                 throw new RuntimeException("no service available for " + serviceName);
             }
 
-            logger.info("found server = {} list = {}", serviceName, strings);
+            log.info("found server = {} list = {}", serviceName, strings);
 
             for(String conStr : strings){
                 addNewChannel(conStr);
@@ -119,7 +118,7 @@ public class ClientImpl implements Client{
         int port = Integer.parseInt(strings.get(1));
         ChannelConfig channelWrapper = new ChannelConfig(host, port);
         channelWrappers.add(channelWrapper);
-        logger.info("add new channel = {}, {}", connStr, channelWrapper);
+        log.info("add new channel = {}, {}", connStr, channelWrapper);
     }
 
     private ChannelConfig selectChannel(){
