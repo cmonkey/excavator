@@ -42,7 +42,7 @@ public class ServerImpl implements Server{
     private EventLoopGroup workerGroup = new NioEventLoopGroup();
     private CuratorFramework curatorFramework;
 
-    public ServerImpl(int prot, Object serviceImpl, String serviceName){
+    public ServerImpl(int port, Object serviceImpl, String serviceName){
         this.port = port;
         this.serviceImpl = serviceImpl;
         this.serviceName = serviceName;
