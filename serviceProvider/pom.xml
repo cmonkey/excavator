@@ -6,7 +6,9 @@
         <artifactId>excavator</artifactId>
         <groupId>com.excavator</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <!--
+           -<relativePath/>
+           -->
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
