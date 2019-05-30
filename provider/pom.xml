@@ -13,9 +13,6 @@
 
     <artifactId>provider</artifactId>
 
-    <properties>
-        <spring.version>LATEST</spring.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.excavator</groupId>
