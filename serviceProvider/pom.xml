@@ -6,9 +6,7 @@
         <artifactId>excavator</artifactId>
         <groupId>com.excavator</groupId>
         <version>1.0-SNAPSHOT</version>
-        <!--
-           -<relativePath/>
-           -->
+       <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -16,12 +14,7 @@
     <artifactId>serviceProvider</artifactId>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <start-class>com.excavator.rpc.service.provider.RpcServiceProviderApplication</start-class>
-        <spring.version>LATEST</spring.version>
-        <spring-maven-plugin-version>1.5.2.RELEASE</spring-maven-plugin-version>
     </properties>
 
     <dependencies>
@@ -30,12 +23,12 @@
         <dependency>
             <groupId>com.excavator</groupId>
             <artifactId>provider</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.excavator</groupId>
             <artifactId>serviceInterface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- spring boot web -->
@@ -48,13 +41,11 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
-            <version>${spring.version}</version>
         </dependency>
 
     </dependencies>
@@ -63,7 +54,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-maven-plugin-version}</version>
                 <executions>
                     <execution>
                         <goals>
