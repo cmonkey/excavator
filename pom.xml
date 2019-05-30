@@ -62,6 +62,7 @@
         <curator.version>4.2.0</curator.version>
         <commons-collections4.version>4.3</commons-collections4.version>
         <cglib.version>3.2.12</cglib.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
 	</properties>
 
     <dependencies>
@@ -152,13 +153,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.16</version>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.8</version>
+            <version>${zookeeper.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-log4j12</artifactId>
