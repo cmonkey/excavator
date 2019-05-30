@@ -13,12 +13,7 @@
     <artifactId>serviceConsumer</artifactId>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <start-class>com.excavator.rpc.service.consumer.RpcServiceConsumerApplication</start-class>
-        <spring.version>LATEST</spring.version>
-        <spring-maven-plugin-version>1.5.2.RELEASE</spring-maven-plugin-version>
     </properties>
 
     <dependencies>
