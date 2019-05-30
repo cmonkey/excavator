@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.excavator</groupId>
             <artifactId>core</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
