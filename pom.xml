@@ -58,6 +58,8 @@
         <commons-lang3.version>3.9</commons-lang3.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <lombok.version>1.18.8</lombok.version>
+        <kryo.version>4.0.2</kryo.version>
+        <curator.version>4.2.0</curator.version>
 	</properties>
 
     <dependencies>
@@ -110,22 +112,22 @@
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
-            <version>4.0.0</version>
+            <version>${kryo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>2.9.1</version>
+            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-x-discovery</artifactId>
-            <version>2.9.1</version>
+            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-            <version>2.9.1</version>
+            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
