@@ -61,6 +61,7 @@
         <kryo.version>4.0.2</kryo.version>
         <curator.version>4.2.0</curator.version>
         <commons-collections4.version>4.3</commons-collections4.version>
+        <cglib.version>3.2.12</cglib.version>
 	</properties>
 
     <dependencies>
@@ -138,7 +139,7 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>3.2.0</version>
+            <version>${cglib.version}</version>
         </dependency>
 
         <dependency>
