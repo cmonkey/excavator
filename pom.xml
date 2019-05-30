@@ -55,6 +55,8 @@
         <joda-time.version>2.10.2</joda-time.version>
         <springside-utils.version>4.3.0-SNAPSHOT</springside-utils.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
 	</properties>
 
     <dependencies>
@@ -92,12 +94,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.3</version>
+            <version>${commons-beanutils.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
