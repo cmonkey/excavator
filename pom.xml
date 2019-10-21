@@ -51,7 +51,7 @@
 		<java.version>1.8</java.version>
         <google-java-format.version>1.7</google-java-format.version>
         <slf4j.version>1.7.26</slf4j.version>
-        <netty.version>4.1.36.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
         <joda-time.version>2.10.2</joda-time.version>
         <springside-utils.version>4.3.0-SNAPSHOT</springside-utils.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
