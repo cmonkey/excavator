@@ -56,7 +56,7 @@
         <springside-utils.version>4.3.0-SNAPSHOT</springside-utils.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
         <commons-lang3.version>3.9</commons-lang3.version>
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <lombok.version>1.18.8</lombok.version>
         <kryo.version>4.0.2</kryo.version>
         <curator.version>4.2.0</curator.version>
